@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 
 @Entity
 public class Cliente {
@@ -24,17 +25,20 @@ public class Cliente {
 	@Column(name = "data_cadastro")
 	private LocalDate dataCadastro;
 	
+	@PrePersist
+	public void prePersist() {
+		setDataCadastro(LocalDate.now());
+	}
+	
 	// CONSTRUTORES
 	
 	public Cliente() {
 	}
 
-	public Cliente(Integer id, String nome, String cpf, LocalDate dataCadastro) {
+	public Cliente(String nome, String cpf) {
 		super();
-		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
-		this.dataCadastro = dataCadastro;
 	}
 
 	// GETTER SETTER
