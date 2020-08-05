@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Cliente {
 	
@@ -23,6 +25,7 @@ public class Cliente {
 	private String cpf;
 	
 	@Column(name = "data_cadastro")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataCadastro;
 	
 	@PrePersist
@@ -35,10 +38,12 @@ public class Cliente {
 	public Cliente() {
 	}
 
-	public Cliente(String nome, String cpf) {
+	public Cliente(Integer id, String nome, String cpf, LocalDate dataCadastro) {
 		super();
+		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
+		this.dataCadastro = dataCadastro;
 	}
 
 	// GETTER SETTER
