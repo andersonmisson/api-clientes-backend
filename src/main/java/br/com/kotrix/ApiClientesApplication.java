@@ -16,8 +16,8 @@ public class ApiClientesApplication {
 	public CommandLineRunner run ( @Autowired ClienteRepository repository ) {
 		return args->{
 			
-			Cliente c1 = new Cliente (null, "Fulano", "00000000000", null);
-			Cliente c2 = new Cliente (null, "Ciclano", "11111111111", null);
+			Cliente c1 = new Cliente (null, "Fulano", "66560137082", null);
+			Cliente c2 = new Cliente (null, "Ciclano", "20243795084", null);
 			
 			repository.save(c1);
 			repository.save(c2);
